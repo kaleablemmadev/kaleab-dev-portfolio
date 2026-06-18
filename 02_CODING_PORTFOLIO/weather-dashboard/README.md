@@ -48,3 +48,45 @@ Before you begin, ensure you have the following installed:
 - Node.js (v16.0.0 or higher)
 - npm or yarn or pnpm
 
+### Getting Started
+
+#### **1. Clone the Repo**
+```
+git clone https://github.com/kaleablemmadev/kaleab-dev-portfolio/tree/main/02_CODING_PORTFOLIO/weather-dashboard.git
+
+cd trinity-engine\02_CODING_PORTFOLIO\weather-dashboard
+```
+
+
+#### **2. Install Dependencies**
+```
+npm install
+```
+or
+```
+yarn install
+```
+or
+```
+pnpm install
+```
+
+
+#### **3. Set up Environment Variables**
+```
+cp .env.example .env
+```
+
+
+#### 4. **Run the app**
+```
+npm run dev
+```
+or
+```
+yarn dev
+```
+
+### Screenshots of the App
+![Weather App Home Page](./src/assets/screenshots/weather-dashboard-loaded.png)
+![Weather App Paris](./src/assets/screenshots/weather-dashboard-paris.png)
