@@ -106,31 +106,45 @@ function App() {
   };
 
   return (
-    <div className="pt-3">
-      <h1>Weather Dashboard</h1>
-      <p>City: {city}</p>
-      <input
-        type="text"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        placeholder="Enter city name"
-      />
-      <button onClick={handleSearch}>Search</button>
+    <div className="justify-center items-center flex flex-col gap-6 p-6">
+      <h1 className="text-4xl font-bold">Weather Dashboard</h1>
+      <div className="flex flex-col gap-1.5">
+        <div className="flex items-center gap-4">
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="Enter city name"
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
+          <button onClick={handleSearch} className="bg-orange-700 text-white px-4 py-2 rounded-md">
+            Search
+          </button>
+        </div>
+        <p className="text-sm text-gray-400"><span className="text-orange-600">City:</span> {city}</p>
+      </div>
 
       {loading && <p>Loading weather data...</p>}
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
 
       {weather && (
         <>
-          <h3>Geographical Information</h3>
-          <p>Country: {weather.country}</p>
-          <p>Local Time: {weather.localTime}</p>
+          <div className="flex flex-wrap justify-between gap-20">
+            <div className="flex flex-col min-w-[300px]">
+              <h3 className="text-3xl mb-4 font-bold text-orange-700">Geographical Information</h3>
+              <p>Country: {weather.country}</p>
+              <p>Local Time: {weather.localTime}</p>
+            </div>
 
-          <h3>Weather Information <span>(last updated at {weather.lastUpdated})</span></h3>
-          <p>Temperature: {weather.tempC}°C / {weather.tempF}°F</p>
-          <p>Wind Speed: {weather.windMph} mph</p>
-          <p>Humidity: {weather.humidity}%</p>
-          <p>Chance of Rain: {weather.chanceOfRain}</p>
+            <div className="flex flex-col min-w-[300px]">
+              <h3 className="text-3xl font-bold text-orange-700">Weather Information</h3>
+              <p className="text-base font-bold mb-4 text-orange-300">(last updated at {weather.lastUpdated})</p>
+              <p>Temperature: {weather.tempC}°C / {weather.tempF}°F</p>
+              <p>Wind Speed: {weather.windMph} mph</p>
+              <p>Humidity: {weather.humidity}%</p>
+              <p>Chance of Rain: {weather.chanceOfRain}</p>
+            </div>
+          </div>
         </>
       )}
     </div>

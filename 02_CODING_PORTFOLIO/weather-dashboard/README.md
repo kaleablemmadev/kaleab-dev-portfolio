@@ -22,7 +22,7 @@ A modern weather app dashboard built using React and TypeScript which provides a
 | API-Ninjas | City Coordinates |
 
 ### Live Demo
-[**LIVE DEMO**]()
+[**LIVE DEMO**](https://weather-dashboard-v1-n2w4t9lc4-kaleablemmadev-7070s-projects.vercel.app/)
 
 ### APIs included
 
