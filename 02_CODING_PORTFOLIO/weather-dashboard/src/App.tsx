@@ -1,9 +1,20 @@
 import { useState , useEffect } from 'react'
 import './App.css'
 
+interface WeatherDisplay {
+  country: string;
+  localTime: string;
+  lastUpdated: string;
+  tempC: number;
+  tempF: number;
+  windMph: number;
+  humidity: number;
+  chanceOfRain: string;
+}
+
 function App() {
   const [city, setCity] = useState<string>('');
-  const [weather, setWeather] = useState<(string | number)[] | null>(null);
+  const [weather, setWeather] = useState<WeatherDisplay | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,17 +45,21 @@ function App() {
         }
 
         const data = await response.json();
+        if (data.length === 0) {
+          throw new Error('City not found. Please check the spelling and try again.');
+        }
+        
         const lat = data[0].latitude;
         const lon = data[0].longitude;
 
         if (lat == null || lon == null) {
-          throw new Error('City not found');
+          throw new Error('City not found. Please check the spelling and try again.');
         }
 
         const q = `${lat},${lon}`;
 
         const weatherResponse = await fetch(
-          `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${q}`
+          `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${q}`
         );
 
         if (!weatherResponse.ok) {
@@ -62,16 +77,16 @@ function App() {
         const humidity = weatherData.current.humidity;
         const chance_of_rain = `${weatherData.current.chance_of_rain}%`;
 
-        const cityWeatherData = [
-          country,
-          local_time,
-          last_updated,
-          temp_c,
-          temp_f,
-          wind_mph,
-          humidity,
-          chance_of_rain,
-        ];
+        const cityWeatherData: WeatherDisplay = {
+          country: country,
+          localTime: local_time,
+          lastUpdated: last_updated,
+          tempC: temp_c,
+          tempF: temp_f,
+          windMph: wind_mph,
+          humidity: humidity,
+          chanceOfRain: chance_of_rain,
+        }
 
         setWeather(cityWeatherData);
       } catch (err) {
@@ -81,16 +96,14 @@ function App() {
       }
     };
 
-    fetchWeather(city);
-  }, [searchTerm]);
+    fetchWeather(searchTerm);
+  }, [searchTerm, COORDINATES_API_KEY, WEATHER_API_KEY]);
 
   const handleSearch = () => {
     if (city.trim()) {
       setSearchTerm(city.trim());
     }
   };
-
-  const [country, local_time , last_updated , temp_c , temp_f , wind_mph , humidity , chance_of_rain] = weather || [];
 
   return (
     <div className="pt-3">
@@ -110,14 +123,14 @@ function App() {
       {weather && (
         <>
           <h3>Geographical Information</h3>
-          <p>Country: {country}</p>
-          <p>Local Time: {local_time}</p>
-          
-          <h3>Weather Information <span>(last updated at {last_updated})</span></h3>
-          <p>Temperature: {temp_c}°C / {temp_f}°F</p>
-          <p>Wind Speed: {wind_mph} mph</p>
-          <p>Humidity: {humidity}%</p>
-          <p>Chance of Rain: {chance_of_rain}</p>
+          <p>Country: {weather.country}</p>
+          <p>Local Time: {weather.localTime}</p>
+
+          <h3>Weather Information <span>(last updated at {weather.lastUpdated})</span></h3>
+          <p>Temperature: {weather.tempC}°C / {weather.tempF}°F</p>
+          <p>Wind Speed: {weather.windMph} mph</p>
+          <p>Humidity: {weather.humidity}%</p>
+          <p>Chance of Rain: {weather.chanceOfRain}</p>
         </>
       )}
     </div>
