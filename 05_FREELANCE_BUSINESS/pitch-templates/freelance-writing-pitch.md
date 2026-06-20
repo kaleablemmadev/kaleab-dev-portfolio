@@ -3,7 +3,7 @@
 **To:** [Hiring Manager / Founder Name]
 **Subject:** Technical Writer for [Company Name]
 
-Hi [Name],
+Hi [Name], I saw you're the Head of Marketing at [Company]. I've been following your work on [something specific].
 
 I'm a software engineering student and technical writer. I recently built a live Weather Dashboard using React and TypeScript, and I write tutorials explaining complex coding concepts in simple terms.
 

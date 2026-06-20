@@ -40,3 +40,18 @@
 - Send 5 pitches.
 - Update freelance prospects list.
 - Check Gumroad/Payhip for any sales.
+
+## 2026-06-21 (Sunday - ContentIQ Groundwork)
+### Today's Focus
+- [x] Created ContentIQ landing page: [ContentIQ](https://contentiq.carrd.co/)
+- [x] Set up waitlist (Google Forms): [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSe93gwjQsUDiS2uVghhD0qCXn6P7az7kuXcn_642vO_ZD7HYQ/viewform?usp=dialog)
+- [x] Connected the form to the button and tested it.
+- [x] Saved all links.
+
+### Links
+- Landing Page: [ContentIQ](https://contentiq.carrd.co/)
+- Waitlist: [Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSe93gwjQsUDiS2uVghhD0qCXn6P7az7kuXcn_642vO_ZD7HYQ/viewform?usp=dialog)
+
+### Notes
+- The waitlist is now live and capturing emails.
+- Tomorrow: Share on X and LinkedIn.
